@@ -1,0 +1,109 @@
+################   Run parameters (can feed this file back to EAZY)  ####################
+## Filters
+FILTERS_RES          candels.res        # Filter transmission data
+FILTER_FORMAT        1                  # Format of FILTERS_RES file -- 0: energy-  1: photon-counting detector
+SMOOTH_FILTERS       1                  # Smooth filter curves with Gaussian
+SMOOTH_SIGMA         100.00             # Gaussian sigma (in Angstroms) to smooth filters
+
+## Templates
+TEMPLATES_FILE       templates/eazy_v1.0.spectra.param # Template definition file
+TEMPLATE_COMBOS      99                 # Template combination options: 
+NMF_TOLERANCE        1.00e-04           # Tolerance for non-negative combinations (TEMPLATE_COMBOS=a)
+WAVELENGTH_FILE      templates/lambda.def # Wavelength grid definition file
+TEMP_ERR_FILE        templates/TEMPLATE_ERROR.eazy_v1.0 # Template error definition file
+TEMP_ERR_A2          1.000              # Template error amplitude
+SYS_ERR              0.000              # Systematic flux error (% of flux)
+APPLY_IGM            1                  # Apply Madau 1995 IGM absorption
+
+DUMP_TEMPLATE_CACHE  0                  # Write binary template cache
+USE_TEMPLATE_CACHE   0                  # Load in template cache
+CACHE_FILE           tempfilt.dat       # Template cache file (in OUTPUT_DIRECTORY)
+
+## Input Files
+CATALOG_FILE         eazyerr11_CANDELS.cat # Catalog data file
+NOT_OBS_THRESHOLD    -90.000            # Ignore flux point if <NOT_OBS_THRESH
+N_MIN_COLORS         5                  # Require N_MIN_COLORS to fit
+
+## Output Files
+OUTPUT_DIRECTORY     OUTPUT             # Directory to put output files in
+MAIN_OUTPUT_FILE     photz              # Main output file, .zout
+PRINT_ERRORS         1                  # Print 68, 95 and 99% confidence intervals
+CHI2_SCALE           1.000              # Scale ML Chi-squared values to improve confidence intervals
+VERBOSE_LOG          1                  # Dump information from the run into [MAIN_OUTPUT_FILE].param
+OBS_SED_FILE         0                  # Write out observed SED/object, .obs_sed
+TEMP_SED_FILE        0                  # Write out best template fit/object, .temp_sed
+POFZ_FILE            1                  # Write out Pofz/object, .pz
+BINARY_OUTPUT        0                  # Save OBS_SED, TEMP_SED, PZ in binary format to read with e.g IDL
+
+## Redshift / Mag prior
+APPLY_PRIOR          1                  # Apply apparent magnitude prior
+PRIOR_FILE           prior_K_zmax7.dat  # File containing prior grid
+PRIOR_FILTER         37                 # Filter from FILTER_RES corresponding to the columns in PRIOR_FILE
+PRIOR_ABZP           23.900             # AB zeropoint of fluxes in catalog.  Needed for calculating apparent mags!
+
+## Redshift Grid
+FIX_ZSPEC            0                  # Fix redshift to catalog zspec
+Z_MIN                0.010              # Minimum redshift
+Z_MAX                6.000              # Maximum redshift
+Z_STEP               0.010              # Redshift step size
+Z_STEP_TYPE          1                  #  0 = ZSTEP, 1 = Z_STEP*(1+z)
+
+## Zeropoint Offsets
+GET_ZP_OFFSETS       0                  # Look for zphot.zeropoint file and compute zeropoint offsets
+ZP_OFFSET_TOL        1.000e-04          # Tolerance for iterative fit for zeropoint offsets
+
+## Cosmology
+H0                   70.000             #  Hubble constant
+OMEGA_M              0.300              # Omega_matter
+OMEGA_L              0.700              # Omega_lambda
+#
+####################################
+#
+# Smoothing filters with gaussian sig=100.000000 A.
+#
+#  Filter #1, RES#127: CANDELS/3columns_Filter01_CTIO_U.txt - lambda_c=3737.024688
+#       [flux col: 1, error col.: 2]
+#  Filter #2, RES#103: ESO/vimos_u.res - lambda_c=3753.007136
+#       [flux col: 3, error col.: 4]
+#  Filter #3, RES#1: hst/ACS_update_sep07/wfc_f435w_t77.dat - lambda_c=4327.815099
+#       [flux col: 5, error col.: 6]
+#  Filter #4, RES#4: hst/ACS_update_sep07/wfc_f606w_t77.dat - lambda_c=5957.930791
+#       [flux col: 7, error col.: 8]
+#  Filter #5, RES#5: hst/ACS_update_sep07/wfc_f775w_t77.dat - lambda_c=7705.665582
+#       [flux col: 9, error col.: 10]
+#  Filter #6, RES#7: hst/ACS_update_sep07/wfc_f850lp_t77.dat - lambda_c=9052.457248
+#       [flux col: 11, error col.: 12]
+#  Filter #7, RES#128: 3columns_Filter07_WFC3_f098m.txt - lambda_c=9864.234502
+#       [flux col: 13, error col.: 14]
+#  Filter #8, RES#129: CANDELS/3columns_Filter08_WFC3_f105w.txt - lambda_c=10584.280178
+#       [flux col: 15, error col.: 16]
+#  Filter #9, RES#130: 3columns_Filter09_WFC3_f125w.txt - lambda_c=12516.308110
+#       [flux col: 17, error col.: 18]
+#  Filter #10, RES#131: 3columns_Filter10_WFC3_f160w.txt - lambda_c=15392.201714
+#       [flux col: 19, error col.: 20]
+#  Filter #11, RES#37: isaac_ks.res - lambda_c=21681.334039
+#       [flux col: 21, error col.: 22]
+#  Filter #12, RES#132: 3columns_Filter12_HawkI_Ks.txt - lambda_c=21484.914300
+#       [flux col: 23, error col.: 24]
+#  Filter #13, RES#18: IRAC/irac_tr1_2004-08-09.dat - lambda_c=35634.284306
+#       [flux col: 25, error col.: 26]
+#  Filter #14, RES#19: IRAC/irac_tr2_2004-08-09.dat - lambda_c=45110.129746
+#       [flux col: 27, error col.: 28]
+#  Filter #15, RES#20: IRAC/irac_tr3_2004-08-09.dat - lambda_c=57593.392160
+#       [flux col: 29, error col.: 30]
+#  Filter #16, RES#21: IRAC/irac_tr4_2004-08-09.dat - lambda_c=79594.948552
+#       [flux col: 31, error col.: 32]
+#  Template 1: templates/EAZY_v1.0/eazy_v1.0_sed1.dat
+#     1.000000   0.000000   1.000000
+#  Template 2: templates/EAZY_v1.0/eazy_v1.0_sed2.dat
+#     1.000000   0.000000   1.000000
+#  Template 3: templates/EAZY_v1.0/eazy_v1.0_sed3.dat
+#     1.000000   0.000000   1.000000
+#  Template 4: templates/EAZY_v1.0/eazy_v1.0_sed4.dat
+#     1.000000   0.000000   1.000000
+#  Template 5: templates/EAZY_v1.0/eazy_v1.0_sed5.dat
+#     1.000000   0.000000   1.000000
+#  Template 6: templates/EAZY_v1.0/eazy_v1.0_sed6.dat
+#     1.000000   0.000000   1.000000
+# EAZY v1.00 (July 9, 2008)
+# Took 12 seconds.
